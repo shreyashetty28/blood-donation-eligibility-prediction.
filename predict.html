@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction</title>
+    <link rel="stylesheet" href="/static/predict.css">
+</head>
+
+<body>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/methodology">Methodology</a>
+    <a href="/predict">Predict</a>
+    <a href="/contact">Contact</a>
+</nav>
+
+
+<div class="container">
+
+<h1><u>Blood Donation Prediction</u></h1>
+
+<form action="/predict" method="POST">
+
+<label>Age</label><br>
+<input type="number" name="age" required>
+<br><br>
+
+
+<label>Gender</label><br>
+<select name="gender">
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+</select>
+<br><br>
+
+
+<label>Weight</label><br>
+<input type="number" step="0.1" name="weight" required>
+<br><br>
+
+
+<label>Blood Group</label><br>
+<select name="blood_group">
+    <option>A+</option>
+    <option>A-</option>
+    <option>B+</option>
+    <option>B-</option>
+    <option>O+</option>
+    <option>O-</option>
+    <option>AB+</option>
+    <option>AB-</option>
+</select>
+<br><br>
+
+<label>Hemoglobin (g/dL)</label><br>
+<input type="number" step="0.1" name="hemoglobin"required>
+<br><br>
+
+
+<button type="submit">Predict</button>
+
+</form>
+
+
+{% if prediction_text %}
+
+<hr>
+
+<h2>Prediction Result</h2>
+
+<h3>{{ prediction_text }}</h3>
+
+<h3>Entered Details</h3>
+
+<p><b>Gender:</b> {{ gender }}</p>
+
+<p><b>Age:</b> {{ age }}</p>
+
+<p><b>Blood Group:</b> {{ blood_group }}</p>
+
+<p><b>Weight:</b> {{ weight }} kg</p>
+
+<p><b>Hemoglobin:</b> {{ hemoglobin }} g/dL</p>
+
+{% endif %}
+
+
+</div>
+
+</body>
+</html>
